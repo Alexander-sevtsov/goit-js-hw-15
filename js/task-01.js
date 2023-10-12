@@ -1,11 +1,14 @@
-const categoriesList = document.querySelectorAll('.item');
+const validationInput = document.getElementById("validation-input");
 
-console.log(`Number of categories: ${categoriesList.length}`);
+validationInput.addEventListener("blur", () => {
+  const expectedLength = parseInt(validationInput.dataset.length);
+  const currentLength = validationInput.value.length;
 
-categoriesList.forEach(category => {
-  const categoryTitle = category.querySelector('h2').textContent;
-  const elementsCount = category.querySelectorAll('li').length;
-
-  console.log(`Category: ${categoryTitle}`);
-  console.log(`Elements: ${elementsCount}`);
+  if (currentLength === expectedLength) {
+    validationInput.classList.remove("invalid");
+    validationInput.classList.add("valid");
+  } else {
+    validationInput.classList.remove("valid");
+    validationInput.classList.add("invalid");
+  }
 });

@@ -1,15 +1,15 @@
-const counterValue = document.getElementById("value");
-const decrementButton = document.querySelector("[data-action='decrement']");
-const incrementButton = document.querySelector("[data-action='increment']");
+const changeColorButton = document.querySelector('.change-color');
+const colorSpan = document.querySelector('.color');
+const body = document.querySelector('body');
 
-let value = 0;
-
-decrementButton.addEventListener("click", () => {
-  value -= 1;
-  counterValue.textContent = value;
+changeColorButton.addEventListener('click', function () {
+  const randomColor = getRandomHexColor();
+  body.style.backgroundColor = randomColor;
+  colorSpan.textContent = randomColor;
 });
 
-incrementButton.addEventListener("click", () => {
-  value += 1;
-  counterValue.textContent = value;
-});
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, '0')}`;
+}

@@ -1,22 +1,8 @@
-const ingredients = [
-  "Potatoes",
-  "Mushrooms",
-  "Garlic",
-  "Tomatoes",
-  "Herbs",
-  "Condiments",
-];
+const fontSizeControl = document.getElementById("font-size-control");
+const text = document.getElementById("text");
 
-const ulIngredients = document.getElementById("ingredients");
+text.style.fontSize = fontSizeControl.value + "px";
 
-const fragment = document.createDocumentFragment();
-
-ingredients.forEach(ingredient => {
-  const li = document.createElement("li");
-  li.textContent = ingredient;
-  li.classList.add("item");
-  fragment.appendChild(li);
+fontSizeControl.addEventListener("input", () => {
+  text.style.fontSize = fontSizeControl.value + "px";
 });
-
-ulIngredients.appendChild(fragment);
-
